@@ -67,7 +67,10 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
               <div>
                 {!isMyHotels && (
                   <Button
-                    onClick={() => router.push(`hotel/${hotel.id}`)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`hotel/${hotel.id}`);
+                    }}
                     variant="outline"
                   >
                     Edit
