@@ -65,11 +65,10 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
                 </>
               )}
               <div>
-                {!isMyHotels && (
+                {isMyHotels && (
                   <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`hotel/${hotel.id}`);
+                    onClick={() => {
+                      router.push(`/hotel/${hotel.id}`);
                     }}
                     variant="outline"
                   >

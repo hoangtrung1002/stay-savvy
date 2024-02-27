@@ -9,7 +9,12 @@ export const getHotels = async (searchParams: {
   try {
     const { title, city, country, state } = searchParams;
     const hotels = await prismadb.hotel.findMany({
-      where: { title: { contains: title }, country, city, state },
+      where: {
+        title: { contains: title, mode: "insensitive" },
+        country,
+        city,
+        state,
+      },
       include: { rooms: true },
     });
 

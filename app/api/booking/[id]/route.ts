@@ -28,25 +28,31 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
+export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
   try {
     const { userId } = auth();
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
 
     if (!params.id)
-      return new NextResponse("Booking id is required", { status: 400 });
+      return new NextResponse("Hotel id is required", { status: 400 });
 
     if (!userId) return new NextResponse("Unauthorized", { status: 401 });
 
-    const booking = await prismadb.booking.delete({
-      where: { id: params.id },
+    const bookings = await prismadb.booking.findMany({
+      where: {
+        paymentStatus: true,
+        roomId: params.id,
+        endDate: { gt: yesterday },
+      },
     });
 
-    return NextResponse.json(booking);
+    return NextResponse.json(bookings);
   } catch (error) {
-    console.log("Error at /api/booking/id DELETE", error);
+    console.log("Error at /api/booking/id GET", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

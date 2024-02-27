@@ -1,12 +1,12 @@
 "use client";
 
 import { UserButton, useAuth } from "@clerk/nextjs";
-import Container from "../Container";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
-import SearchInput from "../SearchInput";
+import Container from "../Container";
 import { ModeToggle } from "../ModeToggle";
+import SearchInput from "../SearchInput";
+import { Button } from "../ui/button";
 import { NavMenu } from "./NavMenu";
 
 const Navbar = () => {

@@ -4,7 +4,7 @@ import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import RoomCard from "../room/RoomCard";
 import RoomPaymentForm from "./RoomPaymentForm";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
@@ -20,6 +20,10 @@ const BookingClient = () => {
   const { theme } = useTheme();
   const router = useRouter();
 
+  useEffect(() => {
+    setPayLoaded(true);
+  }, []);
+
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
@@ -32,7 +36,7 @@ const BookingClient = () => {
     setIsPaymentSuccess(value);
   };
 
-  if (!isPaymentSuccess && (!bookingRoomData || !clientSecret))
+  if (payLoaded && !isPaymentSuccess && (!bookingRoomData || !clientSecret))
     return (
       <div className="flex items-center flex-col gap-4">
         <div className="text-rose-500">
