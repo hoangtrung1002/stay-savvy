@@ -21,7 +21,7 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
     <div
       onClick={() => !isMyHotels && router.push(`/hotel-details/${hotel.id}`)}
       className={cn(
-        "col-span-1 cursor-pointer transition hover:scale-105",
+        "group col-span-1 cursor-pointer transition hover:scale-105",
         isMyHotels && "cursor-default"
       )}
     >
@@ -33,7 +33,27 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
             alt={hotel.title}
             className="w-full h-full object-cover"
           />
+          <div
+            className={cn(
+              isMyHotels &&
+                "absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out group-hover:opacity-100"
+            )}
+          >
+            <div className="absolute flex w-full h-full justify-center items-center">
+              {isMyHotels && (
+                <Button
+                  onClick={() => {
+                    router.push(`/hotel/${hotel.id}`);
+                  }}
+                  variant="outline"
+                >
+                  Edit
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
+
         <div className="flex-1 flex flex-col justify-between h-[210px] gap-1 p-1 py-2 text-sm">
           <h3 className="font-semibold text-xl">{hotel.title}</h3>
           <div className="text-primary/90">
@@ -64,18 +84,7 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
                   <div className="text-xs">/ 24hrs</div>
                 </>
               )}
-              <div>
-                {isMyHotels && (
-                  <Button
-                    onClick={() => {
-                      router.push(`/hotel/${hotel.id}`);
-                    }}
-                    variant="outline"
-                  >
-                    Edit
-                  </Button>
-                )}
-              </div>
+              <div></div>
             </div>
           </div>
         </div>

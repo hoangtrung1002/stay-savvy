@@ -1,7 +1,7 @@
 "use client";
 import useLocation from "@/hooks/useLocation";
 import { ICity, IState } from "country-state-city";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 import { useEffect, useState } from "react";
 import Container from "./Container";
@@ -17,6 +17,7 @@ import {
 const LocationFilter = () => {
   const [country, setCountry] = useState<string>("");
   const [state, setState] = useState<string>("");
+  const pathname = usePathname();
 
   const [city, setCity] = useState<string>("");
   const { getAllCountries, getCountryState, getStateCities } = useLocation();
@@ -91,6 +92,8 @@ const LocationFilter = () => {
     setState("");
     setCity("");
   };
+
+  if (pathname !== "/") return;
 
   return (
     <Container>
