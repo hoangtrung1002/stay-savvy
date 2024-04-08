@@ -1,12 +1,12 @@
 <!-- Project Title -->
 
-![Social Media](https://i.ibb.co/NjCV8R6/booking-app-thumbnail.png)
+![Booking App](https://i.ibb.co/NjCV8R6/booking-app-thumbnail.png)
 
 <!-- Project Description -->
 
 ## <a name="introduction">🤖 Introduction</a>
 
-FIND YOUR PERFECT STAY WITH STAYSAVVY
+FIND YOUR PERFECT STAY WITH STAYSAVY
 
 Explore our curated collections of homes chosen for their style, location, or nearby activities. Whether you’re looking for a cozy cabin with views or apartments by the beach, StaySavvy helps you find places to stay that are right for your trip.
 
