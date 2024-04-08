@@ -1,6 +1,6 @@
 <!-- Project Title -->
 
-![Social Media](https://i.ibb.co/mz7WscX/Thumbnail.png/thumbnail.png)
+![Social Media](https://i.ibb.co/NjCV8R6/booking-app-thumbnail.png)
 
 <!-- Project Description -->
 
